@@ -1,0 +1,276 @@
+[
+    {
+      "model": "restaurant.customuser",
+      "pk": 1,
+      "fields": {
+        "username": "admin",
+        "email": "admin@example.com",
+        "password": "adminpass",
+        "is_admin": true,
+        "is_customer": false
+      }
+    },
+    {
+      "model": "restaurant.customuser",
+      "pk": 2,
+      "fields": {
+        "username": "john_doe",
+        "email": "john@example.com",
+        "password": "password123",
+        "is_admin": false,
+        "is_customer": true
+      }
+    },
+    {
+      "model": "restaurant.customuser",
+      "pk": 3,
+      "fields": {
+        "username": "jane_smith",
+        "email": "jane@example.com",
+        "password": "password123",
+        "is_admin": false,
+        "is_customer": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 1,
+      "fields": {
+        "name": "Pepperoni Pizza",
+        "description": "Cheesy pepperoni pizza",
+        "price": "12.99",
+        "category": "Pizza",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 2,
+      "fields": {
+        "name": "Cheeseburger",
+        "description": "Beef burger with cheese",
+        "price": "9.99",
+        "category": "Burger",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 3,
+      "fields": {
+        "name": "Spaghetti",
+        "description": "Spaghetti with marinara sauce",
+        "price": "8.99",
+        "category": "Pasta",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 4,
+      "fields": {
+        "name": "Caesar Salad",
+        "description": "Fresh Caesar salad",
+        "price": "7.49",
+        "category": "Salad",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 5,
+      "fields": {
+        "name": "Grilled Chicken",
+        "description": "Juicy grilled chicken with spices",
+        "price": "10.99",
+        "category": "Main Course",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 6,
+      "fields": {
+        "name": "French Fries",
+        "description": "Crispy golden fries",
+        "price": "4.99",
+        "category": "Sides",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 7,
+      "fields": {
+        "name": "Margarita Pizza",
+        "description": "Classic pizza with mozzarella and basil",
+        "price": "11.99",
+        "category": "Pizza",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 8,
+      "fields": {
+        "name": "BBQ Chicken Burger",
+        "description": "Chicken burger with BBQ sauce",
+        "price": "10.49",
+        "category": "Burger",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 9,
+      "fields": {
+        "name": "Penne Alfredo",
+        "description": "Penne pasta in creamy Alfredo sauce",
+        "price": "9.49",
+        "category": "Pasta",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 10,
+      "fields": {
+        "name": "Greek Salad",
+        "description": "Salad with feta cheese and olives",
+        "price": "6.99",
+        "category": "Salad",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 11,
+      "fields": {
+        "name": "Chicken Wings",
+        "description": "Spicy buffalo wings",
+        "price": "8.49",
+        "category": "Appetizer",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 12,
+      "fields": {
+        "name": "Garlic Bread",
+        "description": "Toasted garlic bread with butter",
+        "price": "3.99",
+        "category": "Sides",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 13,
+      "fields": {
+        "name": "Tiramisu",
+        "description": "Classic Italian dessert",
+        "price": "5.99",
+        "category": "Dessert",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 14,
+      "fields": {
+        "name": "Chocolate Brownie",
+        "description": "Rich and fudgy brownie",
+        "price": "4.49",
+        "category": "Dessert",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 15,
+      "fields": {
+        "name": "Milkshake",
+        "description": "Thick and creamy milkshake",
+        "price": "6.49",
+        "category": "Beverage",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 16,
+      "fields": {
+        "name": "Lemonade",
+        "description": "Freshly squeezed lemonade",
+        "price": "3.99",
+        "category": "Beverage",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 17,
+      "fields": {
+        "name": "Iced Coffee",
+        "description": "Cold brew coffee with ice",
+        "price": "4.99",
+        "category": "Beverage",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 18,
+      "fields": {
+        "name": "Sushi Roll",
+        "description": "Fresh sushi rolls with salmon",
+        "price": "13.99",
+        "category": "Main Course",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 19,
+      "fields": {
+        "name": "Chicken Tacos",
+        "description": "Soft tacos with grilled chicken",
+        "price": "7.99",
+        "category": "Main Course",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.fooditem",
+      "pk": 20,
+      "fields": {
+        "name": "Pancakes",
+        "description": "Fluffy pancakes with maple syrup",
+        "price": "5.99",
+        "category": "Breakfast",
+        "availability": true
+      }
+    },
+    {
+      "model": "restaurant.order",
+      "pk": 1,
+      "fields": {
+        "customer": 2,
+        "items": [1, 4, 6],
+        "total_price": "25.47",
+        "status": "pending"
+      }
+    },
+    {
+      "model": "restaurant.order",
+      "pk": 2,
+      "fields": {
+        "customer": 3,
+        "items": [2, 3, 5],
+        "total_price": "29.47",
+        "status": "completed"
+      }
+    }
+  ]
+  

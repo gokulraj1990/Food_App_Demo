@@ -15,6 +15,13 @@ from .serializers import UserSerializer, FoodItemSerializer, OrderSerializer
 from .recommendations import get_recommendations
 from .authentication import CookieJWTAuthentication  # Import custom authentication class
 from rest_framework.exceptions import NotFound, PermissionDenied, ValidationError
+from rest_framework.pagination import PageNumberPagination
+
+class CustomPagination(PageNumberPagination):
+    page_size = 5  # Number of items per page
+    page_size_query_param = 'page_size'  # Allow dynamic page size (e.g., ?page_size=10)
+    max_page_size = 50  # Prevent excessive results per page
+
 
 # ✅ Register User (Customer Only)
 @api_view(['POST'])
@@ -79,42 +86,27 @@ def login_view(request):
 def user_profile(request):
     try:
         if request.method == 'GET':
+            # Return user profile with serializer
             serializer = UserSerializer(request.user)
             return Response(serializer.data)
 
         if request.method == 'PATCH':
-            # Handle image update via PATCH
-            serializer = UserSerializer(request.user, data=request.data, partial=True)
+            # Handle PATCH request to update user profile (partial update)
+            serializer = UserSerializer(request.user, data=request.data, partial=True)  # Allows partial update
             if serializer.is_valid():
-                serializer.save()
+                serializer.save()  # Save the updated user data (including profile image if present)
                 return Response(serializer.data, status=200)
             return Response(serializer.errors, status=400)
-    
+
     except Exception as e:
         return Response({"error": f"An error occurred: {str(e)}"}, status=500)
-
-
-# class FoodItemViewSet(viewsets.ModelViewSet):
-#     queryset = FoodItem.objects.all()
-#     serializer_class = FoodItemSerializer
-#     permission_classes = [IsAuthenticated, IsAdminUser]  # Ensure user is authenticated
-#     authentication_classes = [CookieJWTAuthentication]  # Use custom authentication
-
-#     parser_classes = [MultiPartParser, FormParser]  # Enable image uploads
-
-#     def perform_create(self, serializer):
-#         try:
-#             serializer.save()
-#         except Exception as e:
-#             raise ValidationError(f"Error creating food item: {str(e)}")
-
 
 
 class FoodItemViewSet(viewsets.ModelViewSet):
     queryset = FoodItem.objects.all()
     serializer_class = FoodItemSerializer
     authentication_classes = [CookieJWTAuthentication]
-
+    pagination_class = CustomPagination
     parser_classes = [MultiPartParser, FormParser]
     filter_backends = [filters.SearchFilter, filters.OrderingFilter]
     search_fields = ['name', 'description', 'category']
@@ -123,10 +115,12 @@ class FoodItemViewSet(viewsets.ModelViewSet):
 
     def get_permissions(self):
         """Set different permissions for different actions."""
-        if self.action in ['list', 'retrieve']:  # Allow customers to view menu
-            return [IsAuthenticated()]
-        return [IsAdminUser()]  # Only admins can modify food items
-
+        if self.action in ['list', 'retrieve']:  # Customers can only view the food items
+            return [IsAuthenticated()]  # Allow authenticated users to view food items
+        elif self.action in ['create', 'update', 'partial_update', 'destroy']:  # Only admins can modify food items
+            return [IsAdminUser()]  # Only admin can add, update, or delete food items
+        return []
+            
     def get_queryset(self):
         queryset = super().get_queryset()
         category = self.request.query_params.get('category')
@@ -179,7 +173,7 @@ class OrderViewSet(viewsets.ModelViewSet):
             self.send_order_completion_email(order)
 
 
-        def send_order_completion_email(self, order):
+    def send_order_completion_email(self, order):
             """Send an email notification to the customer when the order is completed."""
             subject = "Your Order is Completed!"
             message = f"Dear {order.customer.username},\n\nYour order #{order.id} has been marked as Completed. Thank you for ordering with us!\n\nBest regards,\nRestaurant Team"

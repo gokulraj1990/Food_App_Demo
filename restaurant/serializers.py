@@ -6,7 +6,7 @@ from .models import CustomUser, FoodItem, Order
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ('username', 'email', 'password', 'is_customer', 'is_admin')
+        fields = ('username', 'email', 'password', 'is_customer', 'is_admin','profile_image')
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):

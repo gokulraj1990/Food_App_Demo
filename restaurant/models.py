@@ -2,12 +2,21 @@
 
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.hashers import make_password
+
 
 # Custom user model
 class CustomUser(AbstractUser):
     is_customer = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
     profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
+
+    def save(self, *args, **kwargs):
+        # Ensure the password is hashed before saving if it's set
+        if self.password and not self.password.startswith('pbkdf2_sha256$'):
+            self.password = make_password(self.password)  # Hash the password
+
+        super().save(*args, **kwargs)
 
     def __str__(self):
         return self.username
